@@ -22,7 +22,15 @@ function CalculatorCard(){
                 type="text"
                 id="cost"
                 name="cost"
-                onChange={(e) => {setCostInput(e.target.value)}}
+                onChange={(e) => {setCostInput(e.target.value)
+                    if (isNaN(costInput)){
+                        setError(true)
+                        setCostInput(0)
+                    }
+                    else{
+                        setError(false)
+                    }
+                }}
             >
             </input>
             <div className="tipConversion">
@@ -42,7 +50,9 @@ function CalculatorCard(){
             </div>
 
 
-            <h2>$ {roundToDecimal(tipAmount, 2)}</h2>
+
+            <h2>${tipAmount.toFixed(2)}</h2>
+
         </div>
         
     )
